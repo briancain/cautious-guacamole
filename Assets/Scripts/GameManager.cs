@@ -4,6 +4,40 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour {
 
+  private AudioSource audio;
+
+  private enum GameState {
+    TITLE,
+    PLAYING,
+    GAMEOVER
+  }
+
+  GameState gameState;
+
+  void SetGameState(GameState newState) {
+    switch(newState) {
+      case GameState.TITLE:
+        break;
+      case GameState.PLAYING:
+        break;
+      case GameState.GAMEOVER:
+        break;
+      default:
+        Debug.LogError("Given unknown GameState: " + newState);
+        break;
+    }
+  }
+
+  void Awake() {
+    initVars();
+    // TODO: Update this if we get a title
+    SetGameState(GameState.PLAYING);
+  }
+
+  void initVars() {
+    audio = GetComponent<AudioSource>();
+  }
+
   // Use this for initialization
   void Start () {
   }
