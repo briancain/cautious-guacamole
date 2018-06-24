@@ -24,4 +24,19 @@ public class GamePieceManager : MonoBehaviour {
   // Update is called once per frame
   void Update () {
   }
+
+  // Pick up the piece
+  void OnMouseButtonDown() {
+
+  }
+
+  // Drop or reset the piece
+  void OnMouseButtonUp() {
+
+  }
+
+  // Follow the mouse to place the piece
+  void OnMouseDrag() {
+
+  }
 }
