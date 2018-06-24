@@ -12,6 +12,9 @@ public class GameManager : MonoBehaviour {
     GAMEOVER
   }
 
+  [SerializeField]
+  List<GameObject> playerInventory;
+
   GameState gameState;
 
   void SetGameState(GameState newState) {
@@ -30,8 +33,14 @@ public class GameManager : MonoBehaviour {
 
   void Awake() {
     initVars();
+    initPlayerObjects();
     // TODO: Update this if we get a title
     SetGameState(GameState.PLAYING);
+  }
+
+  void initPlayerObjects() {
+    playerInventory = new List<GameObject>();
+
   }
 
   void initVars() {
