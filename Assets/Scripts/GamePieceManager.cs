@@ -6,7 +6,7 @@ public class GamePieceManager : MonoBehaviour {
 
   private bool isPlaced;
   private string displayName;
-  private Transform piecePosition;
+  private Transform finalPiecePosition;
 
   // Timer for when pieces want to start moving after
   // being placed
@@ -33,19 +33,14 @@ public class GamePieceManager : MonoBehaviour {
 
   // Pick up the piece
   void OnMouseDown() {
-    Debug.Log("I was clicked!");
-
   }
 
   // Drop or reset the piece
   void OnMouseUp() {
-    Debug.Log("I was let go!");
-
   }
 
   // Follow the mouse to place the piece
   void OnMouseDrag() {
-    Debug.Log("I am being dragged...");
     transform.position = Camera.main.ScreenToWorldPoint(
         new Vector3(mouseX,mouseY,10.0f));
 

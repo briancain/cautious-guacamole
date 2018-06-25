@@ -12,8 +12,16 @@ public class GameManager : MonoBehaviour {
     GAMEOVER
   }
 
+  private List<GameObject> playerInventory;
+
+  private string[] basicInventory = new string[] {"link", "key", "key"};
+
+
   [SerializeField]
-  List<GameObject> playerInventory;
+  GameObject link;
+
+  [SerializeField]
+  GameObject key;
 
   GameState gameState;
 
@@ -32,18 +40,53 @@ public class GameManager : MonoBehaviour {
   }
 
   void Awake() {
-    initVars();
-    initPlayerObjects();
+    InitVars();
+    InitPlayerObjects();
     // TODO: Update this if we get a title
     SetGameState(GameState.PLAYING);
   }
 
-  void initPlayerObjects() {
+  void SpawnInventory(string[] invSet) {
+    // TODO: Inventory should be about the same size in UI for easy placement
+    Vector3 basePos = new Vector3(-8f, -2f, 1);
+    int j = 0;
+    int k = 0;
+    foreach(string i in invSet) {
+
+      Vector3 pos = new Vector3(basePos.x+j, basePos.y, 1);
+      j += 2;
+
+      GameObject g;
+      switch(i) {
+        case "link":
+          g = link;
+          break;
+        case "key":
+          g = key;
+          break;
+        default:
+          g = link;
+          break;
+      }
+
+      GameObject obj = Instantiate(g, pos, Quaternion.identity);
+      playerInventory.Add(obj);
+    }
+  }
+
+  void ClearInventory() {
+    playerInventory.Clear();
+  }
+
+  void InitPlayerObjects() {
     playerInventory = new List<GameObject>();
+
+    var inventory = basicInventory;
+    SpawnInventory(inventory);
 
   }
 
-  void initVars() {
+  void InitVars() {
     audio = GetComponent<AudioSource>();
   }
 
