@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour {
 
+  private float cryMeter;
+
   private AudioSource audio;
+
+  private List<GameObject> playerInventory;
 
   private enum GameState {
     TITLE,
@@ -12,9 +16,14 @@ public class GameManager : MonoBehaviour {
     GAMEOVER
   }
 
-  private List<GameObject> playerInventory;
-
+  // =============================
+  // Photo Arrangements
+  // =============================
   private string[] basicInventory = new string[] {"link", "key", "key"};
+  private string[] intermediateInventory = new string[] {"link", "key", "key"};
+  private string[] advancedInventory = new string[] {"link", "key", "key"};
+  // =============================
+  // =============================
 
 
   [SerializeField]
@@ -88,6 +97,7 @@ public class GameManager : MonoBehaviour {
 
   void InitVars() {
     audio = GetComponent<AudioSource>();
+    cryMeter = 100f;
   }
 
   // Use this for initialization
