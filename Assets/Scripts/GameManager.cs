@@ -162,5 +162,8 @@ public class GameManager : MonoBehaviour {
     //
     // Check for if pieces match their respective "goal" positions
     // If not, decrement cry meter by a specific amount
+    if (CheckDistanceOfPieces()) {
+      Debug.Log("You win!");
+    }
   }
 }
