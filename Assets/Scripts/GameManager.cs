@@ -25,12 +25,16 @@ public class GameManager : MonoBehaviour {
   // =============================
   // =============================
 
-
+  // =============================
+  // Game Pieces
+  // =============================
   [SerializeField]
   GameObject link;
 
   [SerializeField]
   GameObject key;
+  // =============================
+  // =============================
 
   GameState gameState;
 
@@ -57,7 +61,7 @@ public class GameManager : MonoBehaviour {
 
   void SpawnInventory(string[] invSet) {
     // TODO: Inventory should be about the same size in UI for easy placement
-    Vector3 basePos = new Vector3(-8f, -2f, 1);
+    Vector3 basePos = new Vector3(-4f, -4f, 1);
     int j = 0;
     int k = 0;
     foreach(string i in invSet) {
