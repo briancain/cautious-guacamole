@@ -19,6 +19,12 @@ public class GameManager : MonoBehaviour {
   // =============================
   // Photo Arrangements
   // =============================
+
+  // TODO: These will very likely be hard coded positions for each pre-generated goal photo
+  private Vector3[] winPositions = new Vector3[] { new Vector3(0f, 0f, 0f),
+                                                   new Vector3(0f, 0f, 0f),
+                                                   new Vector3(0f, 0f, 0f) };
+
   private string[] basicInventory = new string[] {"link", "key", "key"};
 
   [SerializeField]
