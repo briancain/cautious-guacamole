@@ -53,7 +53,7 @@ public class GameManager : MonoBehaviour {
     int k = 0;
     foreach(string i in invSet) {
 
-      Vector3 pos = new Vector3(basePos.x+j, basePos.y, 1);
+      Vector3 pos = new Vector3(basePos.x+j, basePos.y, basePos.z);
       j += 2;
 
       GameObject g;

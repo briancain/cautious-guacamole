@@ -23,7 +23,6 @@ public class GamePieceManager : MonoBehaviour {
 
   // Use this for initialization
   void Start () {
-    Debug.Log("Started");
   }
   // Update is called once per frame
   void Update () {
@@ -41,8 +40,9 @@ public class GamePieceManager : MonoBehaviour {
 
   // Follow the mouse to place the piece
   void OnMouseDrag() {
-    transform.position = Camera.main.ScreenToWorldPoint(
-        new Vector3(mouseX,mouseY,10.0f));
-
+    // This seems to be setting the Z to zero??
+    // check camera position on home computer?
+    Vector3 movePos = Camera.main.ScreenToWorldPoint(new Vector3(mouseX,mouseY,11.0f));
+    transform.position = movePos;
   }
 }
