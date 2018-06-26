@@ -20,8 +20,19 @@ public class GameManager : MonoBehaviour {
   // Photo Arrangements
   // =============================
   private string[] basicInventory = new string[] {"link", "key", "key"};
+
+  [SerializeField]
+  GameObject basicInventoryPhoto;
+
   private string[] intermediateInventory = new string[] {"link", "key", "key"};
+
+  [SerializeField]
+  GameObject intermediateInventoryPhoto;
+
   private string[] advancedInventory = new string[] {"link", "key", "key"};
+
+  [SerializeField]
+  GameObject advancedInventoryPhoto;
   // =============================
   // =============================
 
