@@ -125,7 +125,7 @@ GameObject:
   - component: {fileID: 96966993}
   m_Layer: 0
   m_Name: GameManager
-  m_TagString: Untagged
+  m_TagString: GameController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -141,6 +141,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf6722f26e4344ecb8ee12eb816d612e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  basicInventoryPhoto: {fileID: 0}
+  intermediateInventoryPhoto: {fileID: 0}
+  advancedInventoryPhoto: {fileID: 0}
   link: {fileID: 1653785659584090, guid: d56e15517a502403ebd223a7ffcd1c3a, type: 2}
   key: {fileID: 1632292456982552, guid: 062b8a5dccdeb4ce397d62a4824fa731, type: 2}
 --- !u!4 &96966992
