@@ -10,6 +10,10 @@ public class GameManager : MonoBehaviour {
 
   private List<GameObject> playerInventory;
 
+  [SerializeField]
+  float InventoryGoalDistance;
+
+
   private enum GameState {
     TITLE,
     PLAYING,
@@ -115,12 +119,13 @@ public class GameManager : MonoBehaviour {
 
     var inventory = basicInventory;
     SpawnInventory(inventory);
-
+    CheckDistanceOfPieces();
   }
 
   void InitVars() {
     audio = GetComponent<AudioSource>();
     cryMeter = 100f;
+    InventoryGoalDistance = 1.5f;
   }
 
   // Use this for initialization
@@ -131,20 +136,23 @@ public class GameManager : MonoBehaviour {
   void Update () {
     // Decrement cry meter only if game state is playing
     // Check cry meter for <= 0f, and if so, change game state to GAMEOVER
+    CheckDistanceOfPieces();
   }
 
-  // TODO: finish me
+  // Iterates over each inventory piece and checks against the "goal"
+  // Vector3 array to see if each piece is within its goal position.
   bool CheckDistanceOfPieces() {
     int i = 0;
-    bool success = false;
 
     foreach (GameObject p in playerInventory) {
-      //float distance = Vector3.Distance(p.transform, winPositions[i]);
-      float distance = 0f;
-      if (distance >= 1f) {
-        return false;
+      float distance = Vector3.Distance(p.transform.position, winPositions[i]);
+      if (distance >= InventoryGoalDistance) {
+        break;
       }
       i++;
+      if (i == playerInventory.Count){
+        return true;
+      }
     }
     return false;
   }
