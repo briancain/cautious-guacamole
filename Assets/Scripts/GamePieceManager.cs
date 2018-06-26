@@ -18,11 +18,11 @@ public class GamePieceManager : MonoBehaviour {
   private float mouseY;
 
   void Awake() {
-    isPlaced = false;
   }
 
   // Use this for initialization
   void Start () {
+    isPlaced = false;
   }
   // Update is called once per frame
   void Update () {

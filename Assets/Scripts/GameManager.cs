@@ -131,6 +131,12 @@ public class GameManager : MonoBehaviour {
   void Update () {
     // Decrement cry meter only if game state is playing
     // Check cry meter for <= 0f, and if so, change game state to GAMEOVER
-    // Also check for if pieces match their respective "goal" positions
+  }
+
+  public void TakePhoto() {
+    // method to be called from GameObject camera button?
+    //
+    // Check for if pieces match their respective "goal" positions
+    // If not, decrement cry meter by a specific amount
   }
 }
