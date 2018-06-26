@@ -292,7 +292,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0.14509805, g: 0.22352943, b: 0.27058825, a: 1}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -303,7 +303,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 5.447553
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -341,7 +341,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2007613007}
   - component: {fileID: 2007613006}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: bg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -383,7 +383,7 @@ SpriteRenderer:
   m_SortingLayerID: -308741949
   m_SortingLayer: -1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: b4a875b523a36463187f73e8767aade8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2bf2eeb78987549f594f893ed901da51, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -400,8 +400,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2007613005}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.39, y: 0.18, z: -1}
-  m_LocalScale: {x: 4.5, y: 4.5, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
