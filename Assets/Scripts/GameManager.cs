@@ -60,6 +60,8 @@ public class GameManager : MonoBehaviour {
       case GameState.TITLE:
         break;
       case GameState.PLAYING:
+        // Randomly Pick goal photo for game
+        // Start cry  meter
         break;
       case GameState.GAMEOVER:
         break;
@@ -127,5 +129,8 @@ public class GameManager : MonoBehaviour {
 
   // Update is called once per frame
   void Update () {
+    // Decrement cry meter only if game state is playing
+    // Check cry meter for <= 0f, and if so, change game state to GAMEOVER
+    // Also check for if pieces match their respective "goal" positions
   }
 }
