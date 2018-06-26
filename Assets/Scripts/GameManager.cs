@@ -133,6 +133,21 @@ public class GameManager : MonoBehaviour {
     // Check cry meter for <= 0f, and if so, change game state to GAMEOVER
   }
 
+  // TODO: finish me
+  bool CheckDistanceOfPieces() {
+    int i = 0;
+    bool success = false;
+
+    foreach (GameObject p in playerInventory) {
+      float distance = Vector3.Distance(p.transform, winPositions[i]);
+      if (distance >= 1f) {
+        return false;
+      }
+      i++;
+    }
+    return false;
+  }
+
   public void TakePhoto() {
     // method to be called from GameObject camera button?
     //
