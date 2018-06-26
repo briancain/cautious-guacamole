@@ -139,7 +139,8 @@ public class GameManager : MonoBehaviour {
     bool success = false;
 
     foreach (GameObject p in playerInventory) {
-      float distance = Vector3.Distance(p.transform, winPositions[i]);
+      //float distance = Vector3.Distance(p.transform, winPositions[i]);
+      float distance = 0f;
       if (distance >= 1f) {
         return false;
       }
