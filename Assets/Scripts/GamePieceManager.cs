@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class GamePieceManager : MonoBehaviour {
 
-  private bool isPlaced;
   private string displayName;
-  private Transform finalPiecePosition;
   private AudioSource audio;
 
   [SerializeField]
@@ -39,7 +37,6 @@ public class GamePieceManager : MonoBehaviour {
 
   // Use this for initialization
   void Start () {
-    isPlaced = false;
     SetInventoryState(InventoryState.SLEEP);
   }
   // Update is called once per frame
