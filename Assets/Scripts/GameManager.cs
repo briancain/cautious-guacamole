@@ -30,13 +30,16 @@ public class GameManager : MonoBehaviour {
                                                    new Vector3(0f, 0f, 0f),
                                                    new Vector3(0f, 0f, 0f) };
 
-  private string[] basicInventory = new string[] {"bear", "plant", "column"};
+  private string[] basicInventory = new string[] {"link", "key", "key"};
+  private string[] basicInventory1 = new string[] {"plant", "column"};
+  private string[] basicInventory2 = new string[] {"plant", "bear"};
 
-  private string[] intermediateInventory = new string[] {"link", "key", "key"};
+  private string[] intermediateInventory = new string[] {"bear", "column"};
 
   private string[] advancedInventory1 = new string[] {"bear", "column", "plant"};
 
-  private string[] goalPhoto = new string[] {"basic1", "basic2", "int1", "int2", "adv1", "adv2"};
+  // Determines the photo to use for the mini game
+  private string[] goalPhotoGame = new string[] {"basic1", "basic2", "int1", "int2", "adv1", "adv2"};
 
   // =============================
   // =============================
@@ -126,9 +129,45 @@ public class GameManager : MonoBehaviour {
 
   void SelectGame() {
     // randomly pick from goalPhoto array and properly select the right inventory set and generate photos
+    int index = Random.Range(0, goalPhotoGame.Length);
+
     var inventory = basicInventory;
+    string inventoryName;
+
+    // TODO: set win positions for each case
+    switch(index) {
+      case 0:
+        inventoryName = "basic1";
+        inventory = basicInventory1;
+        break;
+      case 1:
+        inventoryName = "basic2";
+        inventory = basicInventory2;
+        break;
+      case 2:
+        inventoryName = "int1";
+        inventory = intermediateInventory;
+        break;
+      case 3:
+        inventoryName = "int2";
+        inventory = intermediateInventory;
+        break;
+      case 4:
+        inventoryName = "adv1";
+        inventory = advancedInventory1;
+        break;
+      case 5:
+        inventoryName = "adv2";
+        inventory = advancedInventory1;
+        break;
+      default:
+        inventoryName = "basic1";
+        inventory = basicInventory;
+        break;
+    }
+
     GoalPhotoManager goalPhotoManager = GameObject.FindGameObjectWithTag("GoalPhoto").GetComponent<GoalPhotoManager>();
-    goalPhotoManager.SetSprite("adv2");
+    goalPhotoManager.SetSprite(inventoryName);
     SpawnInventory(inventory);
   }
 
