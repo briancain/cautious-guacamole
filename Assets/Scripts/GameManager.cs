@@ -34,9 +34,33 @@ public class GameManager : MonoBehaviour {
   private string[] basicInventory1 = new string[] {"plant", "column"};
   private string[] basicInventory2 = new string[] {"plant", "bear"};
 
+  // goal 2
+  private Vector3[] basic1WinPositions = new Vector3[] { new Vector3(5.2f, -1.5f, 1f),
+                                                         new Vector3(-2.5f, -1.5f, 1f) };
+
+  // goal 6
+  private Vector3[] basic2WinPositions = new Vector3[] { new Vector3(-5f, -1.5f, 1f),
+                                                         new Vector3(4f, -1f, 1f) };
+
   private string[] intermediateInventory = new string[] {"bear", "column"};
 
+  // goal 3
+  private Vector3[] int1WinPositions = new Vector3[] { new Vector3(4.5f, -1.5f, 0f),
+                                                      new Vector3(-2f, -1.5f, 0f) };
+  // goal 4
+  private Vector3[] int2WinPositions = new Vector3[] { new Vector3(-4.5f, -1f, 1f),
+                                                      new Vector3(-3f, -1.5f, 1f) };
+
   private string[] advancedInventory1 = new string[] {"bear", "column", "plant"};
+
+  // goal 1
+  private Vector3[] adv1WinPositions = new Vector3[] { new Vector3(-5f, -1.5f, 1f),
+                                                       new Vector3(1.5f, -1f, 1f),
+                                                       new Vector3(5f, -1.5f, 1f) };
+  // goal 5
+  private Vector3[] adv2WinPositions = new Vector3[] { new Vector3(4f, -1.5f, 1f),
+                                                       new Vector3(-2.5f, -1.5f, 1f),
+                                                       new Vector3(-4f, -1.5f, 1f) };
 
   // Determines the photo to use for the mini game
   private string[] goalPhotoGame = new string[] {"basic1", "basic2", "int1", "int2", "adv1", "adv2"};
@@ -139,31 +163,42 @@ public class GameManager : MonoBehaviour {
       case 0:
         inventoryName = "basic1";
         inventory = basicInventory1;
+        winPositions = basic1WinPositions;
         break;
       case 1:
         inventoryName = "basic2";
         inventory = basicInventory2;
+        winPositions = basic2WinPositions;
         break;
       case 2:
         inventoryName = "int1";
         inventory = intermediateInventory;
+        winPositions = int1WinPositions;
         break;
       case 3:
         inventoryName = "int2";
         inventory = intermediateInventory;
+        winPositions = int2WinPositions;
         break;
       case 4:
         inventoryName = "adv1";
         inventory = advancedInventory1;
+        winPositions = adv1WinPositions;
         break;
       case 5:
         inventoryName = "adv2";
         inventory = advancedInventory1;
+        winPositions = adv1WinPositions;
         break;
       default:
         inventoryName = "basic1";
         inventory = basicInventory;
         break;
+    }
+
+    Debug.Log("win positions:");
+    foreach(Vector3 pos in winPositions) {
+      Debug.Log(pos);
     }
 
     GoalPhotoManager goalPhotoManager = GameObject.FindGameObjectWithTag("GoalPhoto").GetComponent<GoalPhotoManager>();
