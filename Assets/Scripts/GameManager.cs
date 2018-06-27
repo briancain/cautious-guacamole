@@ -45,8 +45,8 @@ public class GameManager : MonoBehaviour {
   private string[] intermediateInventory = new string[] {"bear", "column"};
 
   // goal 3
-  private Vector3[] int1WinPositions = new Vector3[] { new Vector3(4.5f, -1.5f, 0f),
-                                                      new Vector3(-2f, -1.5f, 0f) };
+  private Vector3[] int1WinPositions = new Vector3[] { new Vector3(4.5f, -1.5f, 1f),
+                                                      new Vector3(-2f, -1.5f, 1f) };
   // goal 4
   private Vector3[] int2WinPositions = new Vector3[] { new Vector3(-4.5f, -1f, 1f),
                                                       new Vector3(-3f, -1.5f, 1f) };
