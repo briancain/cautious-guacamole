@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour {
                                                    new Vector3(0f, 0f, 0f),
                                                    new Vector3(0f, 0f, 0f) };
 
-  private string[] basicInventory = new string[] {"link", "key", "key"};
+  private string[] basicInventory = new string[] {"bear", "plant", "column"};
 
   [SerializeField]
   GameObject basicInventoryPhoto;
@@ -54,6 +54,15 @@ public class GameManager : MonoBehaviour {
 
   [SerializeField]
   GameObject key;
+
+  [SerializeField]
+  GameObject bear;
+
+  [SerializeField]
+  GameObject plant;
+
+  [SerializeField]
+  GameObject column;
   // =============================
   // =============================
 
@@ -99,6 +108,15 @@ public class GameManager : MonoBehaviour {
           break;
         case "key":
           g = key;
+          break;
+        case "bear":
+          g = bear;
+          break;
+        case "column":
+          g = column;
+          break;
+        case "plant":
+          g = plant;
           break;
         default:
           g = link;

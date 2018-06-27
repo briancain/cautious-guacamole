@@ -147,6 +147,9 @@ MonoBehaviour:
   advancedInventoryPhoto: {fileID: 0}
   link: {fileID: 1653785659584090, guid: d56e15517a502403ebd223a7ffcd1c3a, type: 2}
   key: {fileID: 1632292456982552, guid: 062b8a5dccdeb4ce397d62a4824fa731, type: 2}
+  bear: {fileID: 1091619654952936, guid: 945b4ad24571b44ab8ac1aebb66c96cd, type: 2}
+  plant: {fileID: 1362850872065810, guid: bde0a948b44004d36ac26cf032b14b3d, type: 2}
+  column: {fileID: 1070662699838496, guid: 5c500a40a049c4506893cf66afe70f1d, type: 2}
 --- !u!4 &96966992
 Transform:
   m_ObjectHideFlags: 0
