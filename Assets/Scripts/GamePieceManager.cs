@@ -17,12 +17,22 @@ public class GamePieceManager : MonoBehaviour {
   private float mouseX;
   private float mouseY;
 
+  private SpriteRenderer sr;
+
+  private enum InventoryState {
+    SLEEP,
+    MOVE
+  }
+
+  InventoryState inventoryState;
+
   void Awake() {
   }
 
   // Use this for initialization
   void Start () {
     isPlaced = false;
+    SetInventoryState(InventoryState.SLEEP);
   }
   // Update is called once per frame
   void Update () {
@@ -44,5 +54,16 @@ public class GamePieceManager : MonoBehaviour {
     // check camera position on home computer?
     Vector3 movePos = Camera.main.ScreenToWorldPoint(new Vector3(mouseX,mouseY,11.0f));
     transform.position = movePos;
+    SetInventoryState(InventoryState.MOVE);
   }
+
+  void SetInventoryState(InventoryState state) {
+    switch(state) {
+      case InventoryState.SLEEP:
+        break;
+      case InventoryState.MOVE:
+        break;
+    }
+  }
+
 }

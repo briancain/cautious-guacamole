@@ -10,9 +10,10 @@ public class GameManager : MonoBehaviour {
 
   private List<GameObject> playerInventory;
 
+  private SpriteRenderer sr;
+
   [SerializeField]
   float InventoryGoalDistance;
-
 
   private enum GameState {
     TITLE,
@@ -31,18 +32,13 @@ public class GameManager : MonoBehaviour {
 
   private string[] basicInventory = new string[] {"bear", "plant", "column"};
 
-  [SerializeField]
-  GameObject basicInventoryPhoto;
-
   private string[] intermediateInventory = new string[] {"link", "key", "key"};
 
-  [SerializeField]
-  GameObject intermediateInventoryPhoto;
+  private string[] advancedInventory1 = new string[] {"bear", "column", "plant"};
 
-  private string[] advancedInventory = new string[] {"link", "key", "key"};
+  private string[] goalPhoto = new string[] {"basic1", "basic2", "int1", "int2", "adv1", "adv2"};
 
-  [SerializeField]
-  GameObject advancedInventoryPhoto;
+  // =============================
   // =============================
   // =============================
 
@@ -128,6 +124,14 @@ public class GameManager : MonoBehaviour {
     }
   }
 
+  void SelectGame() {
+    // randomly pick from goalPhoto array and properly select the right inventory set and generate photos
+    var inventory = basicInventory;
+    GoalPhotoManager goalPhotoManager = GameObject.FindGameObjectWithTag("GoalPhoto").GetComponent<GoalPhotoManager>();
+    goalPhotoManager.SetSprite("adv2");
+    SpawnInventory(inventory);
+  }
+
   void ClearInventory() {
     playerInventory.Clear();
   }
@@ -135,15 +139,14 @@ public class GameManager : MonoBehaviour {
   void InitPlayerObjects() {
     playerInventory = new List<GameObject>();
 
-    var inventory = basicInventory;
-    SpawnInventory(inventory);
-    CheckDistanceOfPieces();
+    SelectGame();
   }
 
   void InitVars() {
     audio = GetComponent<AudioSource>();
     cryMeter = 100f;
     InventoryGoalDistance = 1.5f;
+    sr = gameObject.GetComponent<SpriteRenderer>();
   }
 
   // Use this for initialization
