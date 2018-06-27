@@ -57,10 +57,12 @@ public class GamePieceManager : MonoBehaviour {
 
   // Follow the mouse to place the piece
   void OnMouseDrag() {
-    // This seems to be setting the Z to zero??
-    // check camera position on home computer?
     Vector3 movePos = Camera.main.ScreenToWorldPoint(new Vector3(mouseX,mouseY,11.0f));
     transform.position = movePos;
+
+    // set animator to be ACTIVE
+    // then adjust box collider too
+    // expect IDLE animation to be thumbnail inventory picture (the small one)
     SetInventoryState(InventoryState.MOVE);
   }
 

@@ -253,12 +253,10 @@ public class GameManager : MonoBehaviour {
   }
 
   public void TakePhoto() {
-    // method to be called from GameObject camera button?
-    //
-    // Check for if pieces match their respective "goal" positions
-    // If not, decrement cry meter by a specific amount
     if (CheckDistanceOfPieces()) {
       Debug.Log("You win!");
+    } else {
+      // hurt cry meter
     }
   }
 }
