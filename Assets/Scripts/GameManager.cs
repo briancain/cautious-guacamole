@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour {
   private string[] basicInventory2 = new string[] {"plant", "bear"};
 
   // goal 2
-  private Vector3[] basic1WinPositions = new Vector3[] { new Vector3(5.2f, -1.5f, 1f),
+  private Vector3[] basic1WinPositions = new Vector3[] { new Vector3(5.25f, -1.5f, 1f),
                                                          new Vector3(-2.5f, -1.5f, 1f) };
 
   // goal 6

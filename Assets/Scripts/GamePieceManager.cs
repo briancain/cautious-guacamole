@@ -7,6 +7,13 @@ public class GamePieceManager : MonoBehaviour {
   private bool isPlaced;
   private string displayName;
   private Transform finalPiecePosition;
+  private AudioSource audio;
+
+  [SerializeField]
+  AudioClip pickUp;
+
+  [SerializeField]
+  AudioClip putDown;
 
   // Timer for when pieces want to start moving after
   // being placed
@@ -27,6 +34,7 @@ public class GamePieceManager : MonoBehaviour {
   InventoryState inventoryState;
 
   void Awake() {
+    audio = GetComponent<AudioSource>();
   }
 
   // Use this for initialization
@@ -42,10 +50,12 @@ public class GamePieceManager : MonoBehaviour {
 
   // Pick up the piece
   void OnMouseDown() {
+    audio.PlayOneShot(pickUp, 1f);
   }
 
   // Drop or reset the piece
   void OnMouseUp() {
+    audio.PlayOneShot(putDown, 1f);
   }
 
   // Follow the mouse to place the piece
