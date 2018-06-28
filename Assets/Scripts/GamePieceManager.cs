@@ -23,6 +23,7 @@ public class GamePieceManager : MonoBehaviour {
   private float mouseY;
 
   private SpriteRenderer sr;
+  private Animator animator;
 
   private enum InventoryState {
     SLEEP,
@@ -33,6 +34,7 @@ public class GamePieceManager : MonoBehaviour {
 
   void Awake() {
     audio = GetComponent<AudioSource>();
+    animator = gameObject.GetComponent<Animator>();
   }
 
   // Use this for initialization
@@ -71,6 +73,7 @@ public class GamePieceManager : MonoBehaviour {
       case InventoryState.SLEEP:
         break;
       case InventoryState.MOVE:
+        animator.SetBool("Moved", true);
         break;
     }
   }
