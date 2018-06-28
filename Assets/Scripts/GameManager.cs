@@ -15,6 +15,12 @@ public class GameManager : MonoBehaviour {
   [SerializeField]
   float InventoryGoalDistance;
 
+  [SerializeField]
+  AudioClip cameraSuccessClip;
+
+  [SerializeField]
+  AudioClip cameraFailClip;
+
   private enum GameState {
     TITLE,
     PLAYING,
@@ -277,8 +283,10 @@ public class GameManager : MonoBehaviour {
 
   public void TakePhoto() {
     if (CheckDistanceOfPieces()) {
+      audio.PlayOneShot(cameraSuccessClip, 1f);
       Debug.Log("You win!");
     } else {
+      audio.PlayOneShot(cameraFailClip, 1f);
             cryMeter += .10f;
     }
   }
