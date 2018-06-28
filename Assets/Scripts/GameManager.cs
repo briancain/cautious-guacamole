@@ -100,7 +100,7 @@ public class GameManager : MonoBehaviour {
     switch(newState) {
       case GameState.TITLE:
         break;
-      case GameState.PLAYING:                
+      case GameState.PLAYING:
         break;
       case GameState.GAMEOVER:
         break;
@@ -117,7 +117,7 @@ public class GameManager : MonoBehaviour {
     SetGameState(GameState.PLAYING);
   }
 
-  void SpawnInventory(string[] invSet) {
+  void SpawnInventory(string[] invSet, bool[] toFlip) {
     // TODO: Inventory should be about the same size in UI for easy placement
     Vector3 basePos = new Vector3(-4f, -4f, 1);
     int j = 0;
@@ -150,7 +150,11 @@ public class GameManager : MonoBehaviour {
       }
 
       GameObject obj = Instantiate(g, pos, Quaternion.identity);
+      if (toFlip[k] == true) {
+        obj.GetComponent<GamePieceManager>().setFlip();
+      }
       playerInventory.Add(obj);
+      k++;
     }
   }
 
@@ -160,28 +164,32 @@ public class GameManager : MonoBehaviour {
 
     var inventory = basicInventory;
     string inventoryName;
+    bool[] toFlip = new bool[] {false, false, false};
 
-    // TODO: set win positions for each case
     switch(index) {
       case 0:
         inventoryName = "basic1";
         inventory = basicInventory1;
         winPositions = basic1WinPositions;
+        toFlip = new bool[] {false, true, false};
         break;
       case 1:
         inventoryName = "basic2";
         inventory = basicInventory2;
         winPositions = basic2WinPositions;
+        toFlip = new bool[] {true, true, false};
         break;
       case 2:
         inventoryName = "int1";
         inventory = intermediateInventory;
         winPositions = int1WinPositions;
+        toFlip = new bool[] {true, true, false};
         break;
       case 3:
         inventoryName = "int2";
         inventory = intermediateInventory;
         winPositions = int2WinPositions;
+        toFlip = new bool[] {false, true, false};
         break;
       case 4:
         inventoryName = "adv1";
@@ -191,7 +199,8 @@ public class GameManager : MonoBehaviour {
       case 5:
         inventoryName = "adv2";
         inventory = advancedInventory1;
-        winPositions = adv1WinPositions;
+        winPositions = adv2WinPositions;
+        toFlip = new bool[] {true, true, true};
         break;
       default:
         inventoryName = "basic1";
@@ -206,7 +215,7 @@ public class GameManager : MonoBehaviour {
 
     GoalPhotoManager goalPhotoManager = GameObject.FindGameObjectWithTag("GoalPhoto").GetComponent<GoalPhotoManager>();
     goalPhotoManager.SetSprite(inventoryName);
-    SpawnInventory(inventory);
+    SpawnInventory(inventory, toFlip);
   }
 
   void ClearInventory() {
@@ -243,7 +252,7 @@ public class GameManager : MonoBehaviour {
                 SetGameState(GameState.GAMEOVER);
             }
         }
-  
+
     CheckDistanceOfPieces();
   }
 
