@@ -10,9 +10,10 @@ public class GameManager : MonoBehaviour {
 
   private List<GameObject> playerInventory;
 
+  private SpriteRenderer sr;
+
   [SerializeField]
   float InventoryGoalDistance;
-
 
   private enum GameState {
     TITLE,
@@ -30,19 +31,41 @@ public class GameManager : MonoBehaviour {
                                                    new Vector3(0f, 0f, 0f) };
 
   private string[] basicInventory = new string[] {"link", "key", "key"};
+  private string[] basicInventory1 = new string[] {"plant", "column"};
+  private string[] basicInventory2 = new string[] {"plant", "bear"};
 
-  [SerializeField]
-  GameObject basicInventoryPhoto;
+  // goal 2
+  private Vector3[] basic1WinPositions = new Vector3[] { new Vector3(5.25f, -1.5f, 1f),
+                                                         new Vector3(-2.5f, -1.5f, 1f) };
 
-  private string[] intermediateInventory = new string[] {"link", "key", "key"};
+  // goal 6
+  private Vector3[] basic2WinPositions = new Vector3[] { new Vector3(-5f, -1.5f, 1f),
+                                                         new Vector3(4f, -1f, 1f) };
 
-  [SerializeField]
-  GameObject intermediateInventoryPhoto;
+  private string[] intermediateInventory = new string[] {"bear", "column"};
 
-  private string[] advancedInventory = new string[] {"link", "key", "key"};
+  // goal 3
+  private Vector3[] int1WinPositions = new Vector3[] { new Vector3(4.5f, -1.5f, 1f),
+                                                      new Vector3(-2f, -1.5f, 1f) };
+  // goal 4
+  private Vector3[] int2WinPositions = new Vector3[] { new Vector3(-4.5f, -1f, 1f),
+                                                      new Vector3(-3f, -1.5f, 1f) };
 
-  [SerializeField]
-  GameObject advancedInventoryPhoto;
+  private string[] advancedInventory1 = new string[] {"bear", "column", "plant"};
+
+  // goal 1
+  private Vector3[] adv1WinPositions = new Vector3[] { new Vector3(-5f, -1.5f, 1f),
+                                                       new Vector3(1.5f, -1f, 1f),
+                                                       new Vector3(5f, -1.5f, 1f) };
+  // goal 5
+  private Vector3[] adv2WinPositions = new Vector3[] { new Vector3(4f, -1.5f, 1f),
+                                                       new Vector3(-2.5f, -1.5f, 1f),
+                                                       new Vector3(-4f, -1.5f, 1f) };
+
+  // Determines the photo to use for the mini game
+  private string[] goalPhotoGame = new string[] {"basic1", "basic2", "int1", "int2", "adv1", "adv2"};
+
+  // =============================
   // =============================
   // =============================
 
@@ -54,6 +77,15 @@ public class GameManager : MonoBehaviour {
 
   [SerializeField]
   GameObject key;
+
+  [SerializeField]
+  GameObject bear;
+
+  [SerializeField]
+  GameObject plant;
+
+  [SerializeField]
+  GameObject column;
   // =============================
   // =============================
 
@@ -100,6 +132,15 @@ public class GameManager : MonoBehaviour {
         case "key":
           g = key;
           break;
+        case "bear":
+          g = bear;
+          break;
+        case "column":
+          g = column;
+          break;
+        case "plant":
+          g = plant;
+          break;
         default:
           g = link;
           break;
@@ -110,6 +151,61 @@ public class GameManager : MonoBehaviour {
     }
   }
 
+  void SelectGame() {
+    // randomly pick from goalPhoto array and properly select the right inventory set and generate photos
+    int index = Random.Range(0, goalPhotoGame.Length);
+
+    var inventory = basicInventory;
+    string inventoryName;
+
+    // TODO: set win positions for each case
+    switch(index) {
+      case 0:
+        inventoryName = "basic1";
+        inventory = basicInventory1;
+        winPositions = basic1WinPositions;
+        break;
+      case 1:
+        inventoryName = "basic2";
+        inventory = basicInventory2;
+        winPositions = basic2WinPositions;
+        break;
+      case 2:
+        inventoryName = "int1";
+        inventory = intermediateInventory;
+        winPositions = int1WinPositions;
+        break;
+      case 3:
+        inventoryName = "int2";
+        inventory = intermediateInventory;
+        winPositions = int2WinPositions;
+        break;
+      case 4:
+        inventoryName = "adv1";
+        inventory = advancedInventory1;
+        winPositions = adv1WinPositions;
+        break;
+      case 5:
+        inventoryName = "adv2";
+        inventory = advancedInventory1;
+        winPositions = adv1WinPositions;
+        break;
+      default:
+        inventoryName = "basic1";
+        inventory = basicInventory;
+        break;
+    }
+
+    Debug.Log("win positions:");
+    foreach(Vector3 pos in winPositions) {
+      Debug.Log(pos);
+    }
+
+    GoalPhotoManager goalPhotoManager = GameObject.FindGameObjectWithTag("GoalPhoto").GetComponent<GoalPhotoManager>();
+    goalPhotoManager.SetSprite(inventoryName);
+    SpawnInventory(inventory);
+  }
+
   void ClearInventory() {
     playerInventory.Clear();
   }
@@ -117,15 +213,14 @@ public class GameManager : MonoBehaviour {
   void InitPlayerObjects() {
     playerInventory = new List<GameObject>();
 
-    var inventory = basicInventory;
-    SpawnInventory(inventory);
-    CheckDistanceOfPieces();
+    SelectGame();
   }
 
   void InitVars() {
     audio = GetComponent<AudioSource>();
     cryMeter = 100f;
     InventoryGoalDistance = 1.5f;
+    sr = gameObject.GetComponent<SpriteRenderer>();
   }
 
   // Use this for initialization
@@ -158,12 +253,10 @@ public class GameManager : MonoBehaviour {
   }
 
   public void TakePhoto() {
-    // method to be called from GameObject camera button?
-    //
-    // Check for if pieces match their respective "goal" positions
-    // If not, decrement cry meter by a specific amount
     if (CheckDistanceOfPieces()) {
       Debug.Log("You win!");
+    } else {
+      // hurt cry meter
     }
   }
 }

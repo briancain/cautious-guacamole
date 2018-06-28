@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class GamePieceManager : MonoBehaviour {
 
-  private bool isPlaced;
   private string displayName;
-  private Transform finalPiecePosition;
+  private AudioSource audio;
+
+  [SerializeField]
+  AudioClip pickUp;
+
+  [SerializeField]
+  AudioClip putDown;
 
   // Timer for when pieces want to start moving after
   // being placed
@@ -17,12 +22,22 @@ public class GamePieceManager : MonoBehaviour {
   private float mouseX;
   private float mouseY;
 
+  private SpriteRenderer sr;
+
+  private enum InventoryState {
+    SLEEP,
+    MOVE
+  }
+
+  InventoryState inventoryState;
+
   void Awake() {
+    audio = GetComponent<AudioSource>();
   }
 
   // Use this for initialization
   void Start () {
-    isPlaced = false;
+    SetInventoryState(InventoryState.SLEEP);
   }
   // Update is called once per frame
   void Update () {
@@ -32,17 +47,32 @@ public class GamePieceManager : MonoBehaviour {
 
   // Pick up the piece
   void OnMouseDown() {
+    audio.PlayOneShot(pickUp, 1f);
   }
 
   // Drop or reset the piece
   void OnMouseUp() {
+    audio.PlayOneShot(putDown, 1f);
   }
 
   // Follow the mouse to place the piece
   void OnMouseDrag() {
-    // This seems to be setting the Z to zero??
-    // check camera position on home computer?
     Vector3 movePos = Camera.main.ScreenToWorldPoint(new Vector3(mouseX,mouseY,11.0f));
     transform.position = movePos;
+
+    // set animator to be ACTIVE
+    // then adjust box collider too
+    // expect IDLE animation to be thumbnail inventory picture (the small one)
+    SetInventoryState(InventoryState.MOVE);
   }
+
+  void SetInventoryState(InventoryState state) {
+    switch(state) {
+      case InventoryState.SLEEP:
+        break;
+      case InventoryState.MOVE:
+        break;
+    }
+  }
+
 }
