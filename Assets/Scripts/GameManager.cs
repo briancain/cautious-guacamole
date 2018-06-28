@@ -35,32 +35,32 @@ public class GameManager : MonoBehaviour {
   private string[] basicInventory2 = new string[] {"plant", "bear"};
 
   // goal 2
-  private Vector3[] basic1WinPositions = new Vector3[] { new Vector3(5.25f, -1.5f, 1f),
-                                                         new Vector3(-2.5f, -1.5f, 1f) };
+  private Vector3[] basic1WinPositions = new Vector3[] { new Vector3(5.25f, 1.5f, 1f),
+                                                         new Vector3(-3f, 0f, 1f) };
 
   // goal 6
-  private Vector3[] basic2WinPositions = new Vector3[] { new Vector3(-5f, -1.5f, 1f),
-                                                         new Vector3(4f, -1f, 1f) };
+  private Vector3[] basic2WinPositions = new Vector3[] { new Vector3(-5f, 1.5f, 1f),
+                                                         new Vector3(4f, 1f, 1f) };
 
   private string[] intermediateInventory = new string[] {"bear", "column"};
 
   // goal 3
-  private Vector3[] int1WinPositions = new Vector3[] { new Vector3(4.5f, -1.5f, 1f),
-                                                      new Vector3(-2f, -1.5f, 1f) };
+  private Vector3[] int1WinPositions = new Vector3[] { new Vector3(4.5f, 1.5f, 1f),
+                                                      new Vector3(-2f, 1.5f, 1f) };
   // goal 4
-  private Vector3[] int2WinPositions = new Vector3[] { new Vector3(-4.5f, -1f, 1f),
-                                                      new Vector3(-3f, -1.5f, 1f) };
+  private Vector3[] int2WinPositions = new Vector3[] { new Vector3(-4.5f, 1f, 1f),
+                                                      new Vector3(-3f, 1.5f, 1f) };
 
   private string[] advancedInventory1 = new string[] {"bear", "column", "plant"};
 
   // goal 1
-  private Vector3[] adv1WinPositions = new Vector3[] { new Vector3(-5f, -1.5f, 1f),
-                                                       new Vector3(1.5f, -1f, 1f),
-                                                       new Vector3(5f, -1.5f, 1f) };
+  private Vector3[] adv1WinPositions = new Vector3[] { new Vector3(-5f, 1.5f, 1f),
+                                                       new Vector3(1.5f, 1f, 1f),
+                                                       new Vector3(5f, 1.5f, 1f) };
   // goal 5
-  private Vector3[] adv2WinPositions = new Vector3[] { new Vector3(4f, -1.5f, 1f),
-                                                       new Vector3(-2.5f, -1.5f, 1f),
-                                                       new Vector3(-4f, -1.5f, 1f) };
+  private Vector3[] adv2WinPositions = new Vector3[] { new Vector3(4f, 1.5f, 1f),
+                                                       new Vector3(-2.5f, 1.5f, 1f),
+                                                       new Vector3(-4f, 1.5f, 1f) };
 
   // Determines the photo to use for the mini game
   private string[] goalPhotoGame = new string[] {"basic1", "basic2", "int1", "int2", "adv1", "adv2"};
