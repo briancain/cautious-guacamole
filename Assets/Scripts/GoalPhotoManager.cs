@@ -36,6 +36,8 @@ public class GoalPhotoManager : MonoBehaviour {
   }
 
   public void SetSprite(string sprite) {
+    // need this for some reason when we build?!
+    sr = gameObject.GetComponent<SpriteRenderer>();
     Sprite sp;
     switch(sprite) {
       case "basic1":
