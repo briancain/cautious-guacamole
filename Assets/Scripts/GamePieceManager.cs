@@ -78,7 +78,10 @@ public class GamePieceManager : MonoBehaviour {
         break;
       case InventoryState.MOVE:
         animator.SetBool("Moved", true);
-        bc.size = sr.size;
+
+        // We must resize the collider now that it's bigger
+        Vector3 v = sr.bounds.size;
+        bc.size = v;
         break;
     }
   }
