@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour {
@@ -24,7 +25,8 @@ public class GameManager : MonoBehaviour {
   private enum GameState {
     TITLE,
     PLAYING,
-    GAMEOVER
+    LOSE,
+    WIN
   }
 
   // =============================
@@ -103,17 +105,29 @@ public class GameManager : MonoBehaviour {
   GameState gameState;
 
   void SetGameState(GameState newState) {
+     EndScreenManager endScreenManager = GameObject.FindGameObjectWithTag("EndScreen").GetComponent<EndScreenManager>();
     switch(newState) {
       case GameState.TITLE:
         break;
       case GameState.PLAYING:
         break;
-      case GameState.GAMEOVER:
+      case GameState.LOSE:
+        endScreenManager.SetEndingSprite("gameover");
+        endScreenManager.DrawEnding();
+        break;
+      case GameState.WIN:
+        // reloads scene entirely
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        endScreenManager.DrawEnding();
         break;
       default:
         Debug.LogError("Given unknown GameState: " + newState);
         break;
     }
+  }
+
+  IEnumerator Waiter() {
+    yield return new WaitForSeconds(10);
   }
 
   void Awake() {
@@ -221,6 +235,9 @@ public class GameManager : MonoBehaviour {
 
     GoalPhotoManager goalPhotoManager = GameObject.FindGameObjectWithTag("GoalPhoto").GetComponent<GoalPhotoManager>();
     goalPhotoManager.SetSprite(inventoryName);
+
+    EndScreenManager endScreenManager = GameObject.FindGameObjectWithTag("EndScreen").GetComponent<EndScreenManager>();
+    endScreenManager.SetEndingSprite(inventoryName);
     SpawnInventory(inventory, toFlip);
   }
 
@@ -255,11 +272,9 @@ public class GameManager : MonoBehaviour {
             // Check cry meter for >= 1f, and if so, change game state to GAMEOVER
             if (cryMeter >= 1.0f)
             {
-                SetGameState(GameState.GAMEOVER);
+                SetGameState(GameState.LOSE);
             }
         }
-
-    //CheckDistanceOfPieces();
   }
 
   // Iterates over each inventory piece and checks against the "goal"
@@ -285,6 +300,7 @@ public class GameManager : MonoBehaviour {
     if (CheckDistanceOfPieces()) {
       audio.PlayOneShot(cameraSuccessClip, 1f);
       Debug.Log("You win!");
+      SetGameState(GameState.WIN);
     } else {
       audio.PlayOneShot(cameraFailClip, 1f);
       cryMeter += .10f;

@@ -9,6 +9,8 @@ TagManager:
   - GoalPhoto
   - KidPiece
   - Background
+  - EndScreen
+  - Retry
   layers:
   - Default
   - TransparentFX
@@ -19,7 +21,7 @@ TagManager:
   - 
   - 
   - Background
-  - 
+  - Foreground
   - 
   - 
   - 
@@ -51,6 +53,9 @@ TagManager:
     locked: 0
   - name: Eyes
     uniqueID: 1272883729
+    locked: 0
+  - name: Front
+    uniqueID: 1397545847
     locked: 0
   - name: Default
     uniqueID: 0
