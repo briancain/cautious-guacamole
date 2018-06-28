@@ -287,7 +287,7 @@ public class GameManager : MonoBehaviour {
       Debug.Log("You win!");
     } else {
       audio.PlayOneShot(cameraFailClip, 1f);
-            cryMeter += .10f;
+      cryMeter += .10f;
     }
   }
 }
