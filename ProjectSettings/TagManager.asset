@@ -46,6 +46,12 @@ TagManager:
   - name: Background
     uniqueID: 3986225347
     locked: 0
+  - name: Body
+    uniqueID: 4280202095
+    locked: 0
+  - name: Eyes
+    uniqueID: 1272883729
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0

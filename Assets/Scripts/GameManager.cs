@@ -100,9 +100,7 @@ public class GameManager : MonoBehaviour {
     switch(newState) {
       case GameState.TITLE:
         break;
-      case GameState.PLAYING:
-        // Randomly Pick goal photo for game
-        // Start cry  meter
+      case GameState.PLAYING:                
         break;
       case GameState.GAMEOVER:
         break;
@@ -223,7 +221,7 @@ public class GameManager : MonoBehaviour {
 
   void InitVars() {
     audio = GetComponent<AudioSource>();
-    cryMeter = 100f;
+    cryMeter = 0.01f;
     InventoryGoalDistance = 1.5f;
     sr = gameObject.GetComponent<SpriteRenderer>();
   }
@@ -234,8 +232,18 @@ public class GameManager : MonoBehaviour {
 
   // Update is called once per frame
   void Update () {
-    // Decrement cry meter only if game state is playing
-    // Check cry meter for <= 0f, and if so, change game state to GAMEOVER
+   if  (gameState == GameState.PLAYING)
+        { while (cryMeter < 1.01)
+            {
+                cryMeter += .01f;
+            }
+            // Check cry meter for >= 1f, and if so, change game state to GAMEOVER
+            if (cryMeter >= 1.0f)
+            {
+                SetGameState(GameState.GAMEOVER);
+            }
+        }
+  
     CheckDistanceOfPieces();
   }
 
@@ -261,7 +269,7 @@ public class GameManager : MonoBehaviour {
     if (CheckDistanceOfPieces()) {
       Debug.Log("You win!");
     } else {
-      // hurt cry meter
+            cryMeter += .10f;
     }
   }
 }
