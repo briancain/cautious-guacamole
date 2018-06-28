@@ -63,9 +63,9 @@ public class GameManager : MonoBehaviour {
                                                        new Vector3(4f, 1f, 1f) };
   // goal 5
   // Flip Column,Bear,Plant
-  private Vector3[] adv2WinPositions = new Vector3[] { new Vector3(4f, 1.5f, 1f),
-                                                       new Vector3(-2.5f, 1.5f, 1f),
-                                                       new Vector3(-4f, 1.5f, 1f) };
+  private Vector3[] adv2WinPositions = new Vector3[] { new Vector3(4f, 1f, 1f),
+                                                       new Vector3(-2.5f, -0.5f, 1f),
+                                                       new Vector3(-4f, 1f, 1f) };
 
   // Determines the photo to use for the mini game
   private string[] goalPhotoGame = new string[] {"basic1", "basic2", "int1", "int2", "adv1", "adv2"};
@@ -253,7 +253,7 @@ public class GameManager : MonoBehaviour {
             }
         }
 
-    CheckDistanceOfPieces();
+    //CheckDistanceOfPieces();
   }
 
   // Iterates over each inventory piece and checks against the "goal"
@@ -263,6 +263,7 @@ public class GameManager : MonoBehaviour {
 
     foreach (GameObject p in playerInventory) {
       float distance = Vector3.Distance(p.transform.position, winPositions[i]);
+      //Debug.Log(distance);
       if (distance >= InventoryGoalDistance) {
         break;
       }
