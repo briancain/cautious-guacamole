@@ -390,6 +390,48 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 485594132654d43b682051442af80b33, type: 2}
   m_IsPrefabParent: 0
+--- !u!1001 &970693333
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4745840733207286, guid: adcd1f0d0e9dad84db9a6912fa86a4b6, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 4745840733207286, guid: adcd1f0d0e9dad84db9a6912fa86a4b6, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 1.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 4745840733207286, guid: adcd1f0d0e9dad84db9a6912fa86a4b6, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4745840733207286, guid: adcd1f0d0e9dad84db9a6912fa86a4b6, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4745840733207286, guid: adcd1f0d0e9dad84db9a6912fa86a4b6, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4745840733207286, guid: adcd1f0d0e9dad84db9a6912fa86a4b6, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4745840733207286, guid: adcd1f0d0e9dad84db9a6912fa86a4b6, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4745840733207286, guid: adcd1f0d0e9dad84db9a6912fa86a4b6, type: 2}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: adcd1f0d0e9dad84db9a6912fa86a4b6, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1001 &1791415827
 Prefab:
   m_ObjectHideFlags: 0
@@ -527,7 +569,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -308741949
-  m_SortingLayer: -1
+  m_SortingLayer: -3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 07284591d88224a43af6dd6293460acc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
