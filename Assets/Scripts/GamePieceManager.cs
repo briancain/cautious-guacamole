@@ -23,6 +23,9 @@ public class GamePieceManager : MonoBehaviour {
   private float mouseY;
 
   private SpriteRenderer sr;
+  private Animator animator;
+
+  private BoxCollider2D bc;
 
   private enum InventoryState {
     SLEEP,
@@ -33,6 +36,9 @@ public class GamePieceManager : MonoBehaviour {
 
   void Awake() {
     audio = GetComponent<AudioSource>();
+    animator = gameObject.GetComponent<Animator>();
+    bc = gameObject.GetComponent<BoxCollider2D>();
+    sr = gameObject.GetComponent<SpriteRenderer>();
   }
 
   // Use this for initialization
@@ -61,7 +67,7 @@ public class GamePieceManager : MonoBehaviour {
     transform.position = movePos;
 
     // set animator to be ACTIVE
-    // then adjust box collider too
+    // then adjanimator = gameObject.GetComponent<Animator>();ust box collider too
     // expect IDLE animation to be thumbnail inventory picture (the small one)
     SetInventoryState(InventoryState.MOVE);
   }
@@ -71,6 +77,11 @@ public class GamePieceManager : MonoBehaviour {
       case InventoryState.SLEEP:
         break;
       case InventoryState.MOVE:
+        animator.SetBool("Moved", true);
+
+        // We must resize the collider now that it's bigger
+        Vector3 v = sr.bounds.size;
+        bc.size = v;
         break;
     }
   }
