@@ -141,7 +141,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf6722f26e4344ecb8ee12eb816d612e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InventoryGoalDistance: 0
+  InventoryGoalDistance: 1.5
   link: {fileID: 1653785659584090, guid: d56e15517a502403ebd223a7ffcd1c3a, type: 2}
   key: {fileID: 1632292456982552, guid: 062b8a5dccdeb4ce397d62a4824fa731, type: 2}
   bear: {fileID: 1091619654952936, guid: 945b4ad24571b44ab8ac1aebb66c96cd, type: 2}
