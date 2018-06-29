@@ -27,6 +27,8 @@ public class GamePieceManager : MonoBehaviour {
 
   private BoxCollider2D bc;
 
+  private bool toFlip;
+
   private enum InventoryState {
     SLEEP,
     MOVE
@@ -39,6 +41,11 @@ public class GamePieceManager : MonoBehaviour {
     animator = gameObject.GetComponent<Animator>();
     bc = gameObject.GetComponent<BoxCollider2D>();
     sr = gameObject.GetComponent<SpriteRenderer>();
+    toFlip = false;
+  }
+
+  public void setFlip() {
+    toFlip = true;
   }
 
   // Use this for initialization
@@ -82,6 +89,9 @@ public class GamePieceManager : MonoBehaviour {
         // We must resize the collider now that it's bigger
         Vector3 v = sr.bounds.size;
         bc.size = v;
+        if (toFlip) {
+          sr.flipX = true;
+        }
         break;
     }
   }

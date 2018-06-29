@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GoalPhotoManager : MonoBehaviour {
+public class EndScreenManager : MonoBehaviour {
 
   [SerializeField]
   Sprite basicInventoryPhoto1;
@@ -16,30 +16,38 @@ public class GoalPhotoManager : MonoBehaviour {
   [SerializeField]
   Sprite intermediateInventoryPhoto2;
 
-
   [SerializeField]
   Sprite advancedInventoryPhoto1;
 
   [SerializeField]
   Sprite advancedInventoryPhoto2;
 
+  [SerializeField]
+  Sprite gameOverPhoto;
+
   private SpriteRenderer sr;
-  void Awake() {
-    sr = gameObject.GetComponent<SpriteRenderer>();
-  }
+  private string endingVar;
 
   // Use this for initialization
   void Start () {
+    sr = gameObject.GetComponent<SpriteRenderer>();
+    sr.enabled = false;
   }
   // Update is called once per frame
   void Update () {
   }
 
-  public void SetSprite(string sprite) {
-    // need this for some reason when we build?!
+  public void SetEndingSprite(string ending) {
+    endingVar = ending;
+  }
+
+  public void DrawEnding() {
     sr = gameObject.GetComponent<SpriteRenderer>();
     Sprite sp;
-    switch(sprite) {
+    switch(endingVar) {
+      case "gameover":
+        sp = gameOverPhoto;
+        break;
       case "basic1":
         sp = basicInventoryPhoto1;
         break;
@@ -64,5 +72,8 @@ public class GoalPhotoManager : MonoBehaviour {
     }
 
     sr.sprite = sp;
+    sr.enabled = true;
+    Retry r = GameObject.FindGameObjectWithTag("Retry").GetComponent<Retry>();
+    r.TurnOn();
   }
 }
