@@ -145,6 +145,8 @@ MonoBehaviour:
   InventoryGoalDistance: 1.5
   cameraSuccessClip: {fileID: 8300000, guid: acebafe2dd104441f9a4bb4ae9403cd9, type: 3}
   cameraFailClip: {fileID: 8300000, guid: 4edb1b3b2e45846509d0b19e028397f5, type: 3}
+  winTheme: {fileID: 8300000, guid: 51919d09d39d341f5b0ee46b78fece38, type: 3}
+  loseTheme: {fileID: 8300000, guid: 682cc230667a94a7c8b937b66a606339, type: 3}
   link: {fileID: 1653785659584090, guid: d56e15517a502403ebd223a7ffcd1c3a, type: 2}
   key: {fileID: 1632292456982552, guid: 062b8a5dccdeb4ce397d62a4824fa731, type: 2}
   bear: {fileID: 1091619654952936, guid: 945b4ad24571b44ab8ac1aebb66c96cd, type: 2}

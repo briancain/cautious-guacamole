@@ -6,9 +6,8 @@ using UnityEngine;
 public class GameManager : MonoBehaviour {
 
   public float cryMeter;
-   
 
-    private AudioSource audio;
+  private AudioSource audio;
 
   private List<GameObject> playerInventory;
 
@@ -22,6 +21,12 @@ public class GameManager : MonoBehaviour {
 
   [SerializeField]
   AudioClip cameraFailClip;
+
+  [SerializeField]
+  AudioClip winTheme;
+
+  [SerializeField]
+  AudioClip loseTheme;
 
   private enum GameState {
     TITLE,
@@ -119,10 +124,12 @@ public class GameManager : MonoBehaviour {
       case GameState.LOSE:
         endScreenManager.SetEndingSprite("gameover");
         endScreenManager.DrawEnding();
+        audio.PlayOneShot(loseTheme, 1f);
         break;
       case GameState.WIN:
         // reloads scene entirely
         endScreenManager.DrawEnding();
+        audio.PlayOneShot(winTheme, 1f);
         break;
       default:
         Debug.LogError("Given unknown GameState: " + newState);
