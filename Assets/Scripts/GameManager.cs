@@ -127,6 +127,7 @@ public class GameManager : MonoBehaviour {
       case GameState.PLAYING:
         break;
       case GameState.LOSE:
+        audio.Stop();
         endScreenManager.SetEndingSprite("gameover");
         endScreenManager.DrawEnding();
         audio.PlayOneShot(loseTheme, 1f);
