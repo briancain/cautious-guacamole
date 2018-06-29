@@ -6,8 +6,9 @@ using UnityEngine;
 public class GameManager : MonoBehaviour {
 
   public float cryMeter;
+   
 
-  private AudioSource audio;
+    private AudioSource audio;
 
   private List<GameObject> playerInventory;
 
@@ -263,6 +264,7 @@ public class GameManager : MonoBehaviour {
 
   // Use this for initialization
   void Start () {
+       
   }
 
   // Update is called once per frame
