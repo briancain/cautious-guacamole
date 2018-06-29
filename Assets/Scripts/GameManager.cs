@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour {
 
-  private float cryMeter;
+  public float cryMeter;
 
   private AudioSource audio;
 
@@ -267,18 +267,25 @@ public class GameManager : MonoBehaviour {
 
   // Update is called once per frame
   void Update () {
-   if  (gameState == GameState.PLAYING)
-        { while (cryMeter < 1.01)
-            {
-                cryMeter += .01f;
-            }
+        
+   //if  (gameState == GameState.PLAYING)
+        //{
+           // while (cryMeter < 1.01f)
+           // {
+                cryMeter += Time.deltaTime % 60/10 ;
+           // }
             // Check cry meter for >= 1f, and if so, change game state to GAMEOVER
             if (cryMeter >= 1.0f)
             {
-                SetGameState(GameState.LOSE);
+               SetGameState(GameState.LOSE);
+             
             }
-        }
+       // }
   }
+    public float GetCryMeter()
+    {
+        return cryMeter;
+    }
 
   // Iterates over each inventory piece and checks against the "goal"
   // Vector3 array to see if each piece is within its goal position.
