@@ -17,6 +17,11 @@ public class GameManager : MonoBehaviour {
   float InventoryGoalDistance;
 
   [SerializeField]
+  AudioClip cryClip;
+
+  private bool cryPlayed;
+
+  [SerializeField]
   AudioClip cameraSuccessClip;
 
   [SerializeField]
@@ -269,6 +274,7 @@ public class GameManager : MonoBehaviour {
     cryMeter = 0.01f;
     InventoryGoalDistance = 1.5f;
     sr = gameObject.GetComponent<SpriteRenderer>();
+    cryPlayed = false;
   }
 
   // Use this for initialization
@@ -281,6 +287,11 @@ public class GameManager : MonoBehaviour {
     cryMeter += Time.deltaTime % 60/10 ;
       if (cryMeter >= 1.0f) {
          SetGameState(GameState.LOSE);
+      }
+
+      if (cryMeter >= 0.5f && !cryPlayed) {
+        audio.PlayOneShot(cryClip, 0.5f);
+        cryPlayed = true;
       }
     }
   }
@@ -310,6 +321,7 @@ public class GameManager : MonoBehaviour {
 
   public void TakePhoto() {
     if (CheckDistanceOfPieces()) {
+      audio.Stop();
       audio.PlayOneShot(cameraSuccessClip, 1f);
       Debug.Log("You win!");
       SetGameState(GameState.WIN);

@@ -143,6 +143,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cryMeter: 0
   InventoryGoalDistance: 1.5
+  cryClip: {fileID: 8300000, guid: 9c3dec679ded542a4864585f824b8397, type: 3}
   cameraSuccessClip: {fileID: 8300000, guid: acebafe2dd104441f9a4bb4ae9403cd9, type: 3}
   cameraFailClip: {fileID: 8300000, guid: 4edb1b3b2e45846509d0b19e028397f5, type: 3}
   winTheme: {fileID: 8300000, guid: 51919d09d39d341f5b0ee46b78fece38, type: 3}
