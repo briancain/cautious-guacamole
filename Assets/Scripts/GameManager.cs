@@ -110,7 +110,7 @@ public class GameManager : MonoBehaviour {
   GameState gameState;
 
   void SetGameState(GameState newState) {
-     EndScreenManager endScreenManager = GameObject.FindGameObjectWithTag("EndScreen").GetComponent<EndScreenManager>();
+    EndScreenManager endScreenManager = GameObject.FindGameObjectWithTag("EndScreen").GetComponent<EndScreenManager>();
     switch(newState) {
       case GameState.TITLE:
         break;
@@ -128,6 +128,8 @@ public class GameManager : MonoBehaviour {
         Debug.LogError("Given unknown GameState: " + newState);
         break;
     }
+
+    gameState = newState;
   }
 
   IEnumerator Waiter() {
@@ -264,25 +266,16 @@ public class GameManager : MonoBehaviour {
 
   // Use this for initialization
   void Start () {
-       
   }
 
   // Update is called once per frame
   void Update () {
-        
-   //if  (gameState == GameState.PLAYING)
-        //{
-           // while (cryMeter < 1.01f)
-           // {
-                cryMeter += Time.deltaTime % 60/10 ;
-           // }
-            // Check cry meter for >= 1f, and if so, change game state to GAMEOVER
-            if (cryMeter >= 1.0f)
-            {
-               SetGameState(GameState.LOSE);
-             
-            }
-       // }
+    if  (gameState == GameState.PLAYING) {
+    cryMeter += Time.deltaTime % 60/10 ;
+      if (cryMeter >= 1.0f) {
+         SetGameState(GameState.LOSE);
+      }
+    }
   }
     public float GetCryMeter()
     {
