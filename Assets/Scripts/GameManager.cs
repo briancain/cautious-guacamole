@@ -102,6 +102,10 @@ public class GameManager : MonoBehaviour {
   // =============================
   // =============================
 
+  public void ReloadGame(){
+    SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+  }
+
   GameState gameState;
 
   void SetGameState(GameState newState) {
@@ -117,7 +121,6 @@ public class GameManager : MonoBehaviour {
         break;
       case GameState.WIN:
         // reloads scene entirely
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         endScreenManager.DrawEnding();
         break;
       default:

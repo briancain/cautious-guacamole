@@ -73,5 +73,7 @@ public class EndScreenManager : MonoBehaviour {
 
     sr.sprite = sp;
     sr.enabled = true;
+    Retry r = GameObject.FindGameObjectWithTag("Retry").GetComponent<Retry>();
+    r.TurnOn();
   }
 }

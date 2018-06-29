@@ -298,8 +298,23 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 212796217027891598, guid: 2378e61a7dee447eb859f1abce2350cd,
         type: 2}
-      propertyPath: m_Enabled
+      propertyPath: m_SortingLayerID
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212796217027891598, guid: 2378e61a7dee447eb859f1abce2350cd,
+        type: 2}
+      propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212092818531823454, guid: 2378e61a7dee447eb859f1abce2350cd,
+        type: 2}
+      propertyPath: m_SortingLayerID
+      value: 271134661
+      objectReference: {fileID: 0}
+    - target: {fileID: 212092818531823454, guid: 2378e61a7dee447eb859f1abce2350cd,
+        type: 2}
+      propertyPath: m_SortingLayer
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2378e61a7dee447eb859f1abce2350cd, type: 2}
@@ -628,12 +643,12 @@ Prefab:
     - target: {fileID: 224493046078608278, guid: 6cddd09bcd96c6c4ebee3da929ff1cf8,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 200
+      value: 322
       objectReference: {fileID: 0}
     - target: {fileID: 224493046078608278, guid: 6cddd09bcd96c6c4ebee3da929ff1cf8,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 75
+      value: 79
       objectReference: {fileID: 0}
     - target: {fileID: 224493046078608278, guid: 6cddd09bcd96c6c4ebee3da929ff1cf8,
         type: 2}
